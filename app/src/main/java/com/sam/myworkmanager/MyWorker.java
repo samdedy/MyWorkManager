@@ -29,7 +29,7 @@ public class MyWorker extends Worker {
     }
 
     private static final String TAG = MyWorker.class.getSimpleName();
-    private static final String APP_ID = "439d4b804bc8187953eb36d2a8c26a02";
+    private static final String APP_ID = "4fd84305fb0f6c588a1f00991b3a73b5";
     public static final String EXTRA_CITY = "city";
     private Result resultStatus;
 

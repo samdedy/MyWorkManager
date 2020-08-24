@@ -2,7 +2,9 @@ package com.sam.myworkmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.work.Constraints;
 import androidx.work.Data;
+import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -47,8 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .putString(MyWorker.EXTRA_CITY, editCity.getText().toString())
                 .build();
 
+        Constraints constraints = new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .build();
+
         OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorker.class)
                 .setInputData(data)
+                .setConstraints(constraints)
                 .build();
 
         WorkManager.getInstance().enqueue(oneTimeWorkRequest);
